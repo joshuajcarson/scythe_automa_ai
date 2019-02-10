@@ -1,4 +1,4 @@
-from ScytheAI import player_mat
+from gym_scythe import player_mat
 import pytest
 
 def test_mat_contains_trade_action():
