@@ -1,6 +1,8 @@
+import unittest.mock
+
 import pytest
 
-from scythe_automa_ai.scythe_automa_env import ScytheGameStateManager
+from scythe_automa_ai.scythe_automa_env import ScytheGameStateManager, VALID_FACTIONS
 
 
 @pytest.fixture(scope='module')
@@ -21,6 +23,12 @@ def test_newly_created_environment_has_automa_level_set_to_value_specified():
 
 
 def test_newly_created_environment_has_player_set_to_valid_faction(default_game_board):
-    valid_factions = {'albion', 'crimea', 'nordic', 'polania', 'rusviet', 'saxony', 'togawa'}
-    if default_game_board.player_faction not in valid_factions:
-        assert False, "Default player faction not one of the seven valid factions and instead was {}".format(default_game_board.player_faction)
+    if default_game_board.player_faction not in VALID_FACTIONS:
+        assert False, "Default player faction not one of the seven valid factions and instead was {}".format(
+            default_game_board.player_faction)
+
+
+@unittest.mock.patch('random.choice', lambda x: VALID_FACTIONS[2])
+def test_newly_created_environment_uses_random_choice_to_determine_faction_for_player(mock):
+    randomized_game_board = ScytheGameStateManager()
+    assert VALID_FACTIONS[2] == randomized_game_board.player_faction, "Player faction wasn't the correct random faction"
