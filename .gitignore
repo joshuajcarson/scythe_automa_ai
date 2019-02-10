@@ -1,2 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea/
+/gym_scythe.egg-info/
+.pytest_cache
