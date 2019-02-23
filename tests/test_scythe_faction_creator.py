@@ -14,9 +14,11 @@ def test_faction_list_contains_albion_faction():
 def test_albion_faction_defaults_to_correct_base():
     base_power = 3
     base_combat_cards = 0
+    base_faction_power = 'exalt'
     scythe_faction = ScytheFaction(scythe_faction_creator.ALBION)
     assert base_power == scythe_faction.base_power
     assert base_combat_cards == scythe_faction.base_combat_cards
+    assert base_faction_power == scythe_faction.base_faction_power
 
 
 def test_faction_list_contains_crimea_faction():
@@ -27,9 +29,11 @@ def test_faction_list_contains_crimea_faction():
 def test_crimea_faction_defaults_to_correct_base():
     base_power = 5
     base_combat_cards = 0
+    base_faction_power = 'coercion'
     scythe_faction = ScytheFaction(scythe_faction_creator.CRIMEA)
     assert base_power == scythe_faction.base_power
     assert base_combat_cards == scythe_faction.base_combat_cards
+    assert base_faction_power == scythe_faction.base_faction_power
 
 
 def test_faction_list_contains_nordic_faction():
