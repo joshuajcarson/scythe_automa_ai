@@ -16,8 +16,10 @@ FACTION_STARTING_DATA_FRAME = pd.DataFrame(np.array([[3, 0, 'exalt'],
                                                      [3, 2, 'relentless'],
                                                      [1, 4, 'dominate'],
                                                      [0, 2, 'maifuku']]),
-                                           columns = ['base_power', 'base_combat_cards', 'base_faction_power'],
-                                           index = [ALBION, CRIMEA, NORDIC, POLANIA, RUSVIET, SAXONY, TOGAWA])
+                                           columns=['base_power', 'base_combat_cards', 'base_faction_power'],
+                                           index=[ALBION, CRIMEA, NORDIC, POLANIA, RUSVIET, SAXONY, TOGAWA])
+FACTION_STARTING_DATA_FRAME.base_power = pd.to_numeric(FACTION_STARTING_DATA_FRAME.base_power)
+FACTION_STARTING_DATA_FRAME.base_combat_cards = pd.to_numeric(FACTION_STARTING_DATA_FRAME.base_combat_cards)
 
 
 class InvalidFactionException(ValueError):
@@ -25,14 +27,16 @@ class InvalidFactionException(ValueError):
 
 
 def base_power_for_faction(faction):
-    return pd.to_numeric(FACTION_STARTING_DATA_FRAME.loc[faction, 'base_power'])
+    return FACTION_STARTING_DATA_FRAME.loc[faction, 'base_power']
 
 
 def base_combat_cards_for_faction(faction):
-    return pd.to_numeric(FACTION_STARTING_DATA_FRAME.loc[faction, 'base_combat_cards'])
+    return FACTION_STARTING_DATA_FRAME.loc[faction, 'base_combat_cards']
+
 
 def base_faction_power_for_faction(faction):
     return FACTION_STARTING_DATA_FRAME.loc[faction, 'base_faction_power']
+
 
 class ScytheFaction():
 
