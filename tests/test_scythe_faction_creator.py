@@ -4,14 +4,15 @@ import pytest
 
 from scythe_automa_ai import scythe_faction_creator
 from scythe_automa_ai.scythe_faction_creator import VALID_FACTIONS, ScytheFaction, InvalidFactionException, \
-    BASE_COMBAT_CARDS, BASE_POWER, BASE_FACTION_POWER
+    BASE_COMBAT_CARDS, BASE_POWER, BASE_FACTION_POWER, MECH_ONE_ABILITY
 
 
-def helper_to_create_dict_for_default_values(default_power, default_combat_cards, default_faction_power):
+def helper_to_create_dict_for_default_values(default_power, default_combat_cards, default_faction_power, mech_one_ability = None):
     to_return = dict()
     to_return[BASE_POWER] = default_power
     to_return[BASE_COMBAT_CARDS] = default_combat_cards
     to_return[BASE_FACTION_POWER] = default_faction_power
+    to_return[MECH_ONE_ABILITY] = mech_one_ability
     return to_return
 
 
@@ -19,6 +20,7 @@ def helper_for_test_to_make_sure_default_values_are_correct(created_faction_to_t
     assert dict_of_default_values[BASE_POWER] == created_faction_to_test_for.base_power
     assert dict_of_default_values[BASE_COMBAT_CARDS] == created_faction_to_test_for.base_combat_cards
     assert dict_of_default_values[BASE_FACTION_POWER] == created_faction_to_test_for.base_faction_power
+    assert dict_of_default_values[MECH_ONE_ABILITY] == created_faction_to_test_for.mech_one_ability
 
 
 def test_faction_list_contains_albion_faction():
@@ -27,7 +29,7 @@ def test_faction_list_contains_albion_faction():
 
 
 def test_albion_faction_defaults_to_correct_base():
-    default_values = helper_to_create_dict_for_default_values(3, 0, 'exalt')
+    default_values = helper_to_create_dict_for_default_values(3, 0, 'exalt', 'burrow')
     scythe_faction = ScytheFaction(scythe_faction_creator.ALBION)
     helper_for_test_to_make_sure_default_values_are_correct(scythe_faction, default_values)
 
@@ -38,7 +40,7 @@ def test_faction_list_contains_crimea_faction():
 
 
 def test_crimea_faction_defaults_to_correct_base():
-    default_values = helper_to_create_dict_for_default_values(5, 0, 'coercion')
+    default_values = helper_to_create_dict_for_default_values(5, 0, 'coercion', 'riverwalk_crimea')
     scythe_faction = ScytheFaction(scythe_faction_creator.CRIMEA)
     helper_for_test_to_make_sure_default_values_are_correct(scythe_faction, default_values)
 
@@ -49,7 +51,7 @@ def test_faction_list_contains_nordic_faction():
 
 
 def test_nordic_faction_defaults_to_correct_base():
-    default_values = helper_to_create_dict_for_default_values(4, 1, 'swim')
+    default_values = helper_to_create_dict_for_default_values(4, 1, 'swim', 'riverwalk_nordic')
     scythe_faction = ScytheFaction(scythe_faction_creator.NORDIC)
     helper_for_test_to_make_sure_default_values_are_correct(scythe_faction, default_values)
 
@@ -60,7 +62,7 @@ def test_faction_list_contains_polania_faction():
 
 
 def test_polania_faction_defaults_to_correct_base():
-    default_values = helper_to_create_dict_for_default_values(2, 3, 'meander')
+    default_values = helper_to_create_dict_for_default_values(2, 3, 'meander', 'riverwalk_polania')
     scythe_faction = ScytheFaction(scythe_faction_creator.POLANIA)
     helper_for_test_to_make_sure_default_values_are_correct(scythe_faction, default_values)
 
@@ -71,7 +73,7 @@ def test_faction_list_contains_rusviet_faction():
 
 
 def test_rusviet_faction_defaults_to_correct_base():
-    default_values = helper_to_create_dict_for_default_values(3, 2, 'relentless')
+    default_values = helper_to_create_dict_for_default_values(3, 2, 'relentless', 'riverwalk_rusviet')
     scythe_faction = ScytheFaction(scythe_faction_creator.RUSVIET)
     helper_for_test_to_make_sure_default_values_are_correct(scythe_faction, default_values)
 
@@ -82,7 +84,7 @@ def test_faction_list_contains_saxony_faction():
 
 
 def test_saxony_faction_defaults_to_correct_base():
-    default_values = helper_to_create_dict_for_default_values(1, 4, 'dominate')
+    default_values = helper_to_create_dict_for_default_values(1, 4, 'dominate', 'riverwalk_saxony')
     scythe_faction = ScytheFaction(scythe_faction_creator.SAXONY)
     helper_for_test_to_make_sure_default_values_are_correct(scythe_faction, default_values)
 
@@ -93,7 +95,7 @@ def test_faction_list_contains_togawa_faction():
 
 
 def test_togawa_faction_defaults_to_correct_base():
-    default_values = helper_to_create_dict_for_default_values(0, 2, 'maifuku')
+    default_values = helper_to_create_dict_for_default_values(0, 2, 'maifuku', 'toka')
     scythe_faction = ScytheFaction(scythe_faction_creator.TOGAWA)
     helper_for_test_to_make_sure_default_values_are_correct(scythe_faction, default_values)
 
