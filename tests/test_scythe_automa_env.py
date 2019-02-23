@@ -29,6 +29,11 @@ def test_newly_created_environment_has_player_set_to_valid_faction(default_game_
 
 
 @unittest.mock.patch('random.choice', lambda x: VALID_FACTIONS[2])
-def test_newly_created_environment_uses_random_choice_to_determine_faction_for_player(mock):
+def test_newly_created_environment_uses_random_choice_to_determine_faction_for_player(mocker):
     randomized_game_board = ScytheGameStateManager()
     assert VALID_FACTIONS[2] == randomized_game_board.player_faction, "Player faction wasn't the correct random faction"
+
+
+def test_newly_created_environment_uses_unique_faction_from_player_to_determine_faction_for_automa():
+    randomized_game_board = ScytheGameStateManager()
+    assert randomized_game_board.player_faction != randomized_game_board.automa_faction, "Player faction and Automa faction were the same"
