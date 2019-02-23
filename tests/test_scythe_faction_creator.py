@@ -2,6 +2,7 @@ import random
 
 import pytest
 
+from scythe_automa_ai import scythe_faction_creator
 from scythe_automa_ai.scythe_faction_creator import VALID_FACTIONS, ScytheFaction, InvalidFactionException
 
 
@@ -37,7 +38,12 @@ def test_faction_list_contains_albion_faction():
 
 def test_albion_faction_defaults_to_three_power():
     albion_base_power = 3
-    assert albion_base_power == ScytheFaction('albion').base_power
+    assert albion_base_power == ScytheFaction(scythe_faction_creator.ALBION).base_power
+
+
+def test_albion_faction_defaults_to_zero_combat_cards():
+    albion_base_combat_cards = 0
+    assert albion_base_combat_cards == ScytheFaction(scythe_faction_creator.ALBION).base_combat_cards
 
 
 def test_faction_list_contains_saxony_faction():
@@ -47,7 +53,12 @@ def test_faction_list_contains_saxony_faction():
 
 def test_saxony_faction_defaults_to_one_power():
     saxony_base_power = 1
-    assert saxony_base_power == ScytheFaction('saxony').base_power
+    assert saxony_base_power == ScytheFaction(scythe_faction_creator.SAXONY).base_power
+
+
+def test_saxony_faction_defaults_to_four_combat_cards():
+    saxony_base_combat_cards = 4
+    assert saxony_base_combat_cards == ScytheFaction(scythe_faction_creator.SAXONY).base_combat_cards
 
 
 def test_faction_created_is_faction_asked_for():

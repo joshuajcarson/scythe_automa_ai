@@ -18,6 +18,11 @@ def base_power_for_faction(faction):
     return 1
 
 
+def base_combat_cards_for_faction(faction):
+    if faction == ALBION:
+        return 0
+    return 4
+
 class ScytheFaction():
 
     def __init__(self, faction):
@@ -25,3 +30,4 @@ class ScytheFaction():
             raise InvalidFactionException('Invalid Faction Requested', faction)
         self.faction = faction
         self.base_power = base_power_for_faction(faction)
+        self.base_combat_cards = base_combat_cards_for_faction(faction)
