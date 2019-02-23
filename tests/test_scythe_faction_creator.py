@@ -31,6 +31,16 @@ def test_faction_list_contains_polania_faction():
     assert polania_faction in VALID_FACTIONS
 
 
+def test_polania_faction_defaults_to_two_power():
+    polania_base_power = 2
+    assert polania_base_power == ScytheFaction(scythe_faction_creator.POLANIA).base_power
+
+
+def test_polania_faction_defaults_to_three_combat_cards():
+    polania_base_combat_cards = 3
+    assert polania_base_combat_cards == ScytheFaction(scythe_faction_creator.POLANIA).base_combat_cards
+
+
 def test_faction_list_contains_albion_faction():
     albion_faction = 'albion'
     assert albion_faction in VALID_FACTIONS
