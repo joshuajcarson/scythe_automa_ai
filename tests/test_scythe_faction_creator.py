@@ -11,14 +11,12 @@ def test_faction_list_contains_albion_faction():
     assert albion_faction in VALID_FACTIONS
 
 
-def test_albion_faction_defaults_to_three_power():
-    albion_base_power = 3
-    assert albion_base_power == ScytheFaction(scythe_faction_creator.ALBION).base_power
-
-
-def test_albion_faction_defaults_to_zero_combat_cards():
-    albion_base_combat_cards = 0
-    assert albion_base_combat_cards == ScytheFaction(scythe_faction_creator.ALBION).base_combat_cards
+def test_albion_faction_defaults_to_correct_base():
+    base_power = 3
+    base_combat_cards = 0
+    scythe_faction = ScytheFaction(scythe_faction_creator.ALBION)
+    assert base_power == scythe_faction.base_power
+    assert base_combat_cards == scythe_faction.base_combat_cards
 
 
 def test_faction_list_contains_crimea_faction():
@@ -26,14 +24,12 @@ def test_faction_list_contains_crimea_faction():
     assert crimea_faction in VALID_FACTIONS
 
 
-def test_crimea_faction_defaults_to_three_power():
-    crimea_base_power = 5
-    assert crimea_base_power == ScytheFaction(scythe_faction_creator.CRIMEA).base_power
-
-
-def test_crimea_faction_defaults_to_zero_combat_cards():
-    crimea_base_combat_cards = 0
-    assert crimea_base_combat_cards == ScytheFaction(scythe_faction_creator.CRIMEA).base_combat_cards
+def test_crimea_faction_defaults_to_correct_base():
+    base_power = 5
+    base_combat_cards = 0
+    scythe_faction = ScytheFaction(scythe_faction_creator.CRIMEA)
+    assert base_power == scythe_faction.base_power
+    assert base_combat_cards == scythe_faction.base_combat_cards
 
 
 def test_faction_list_contains_nordic_faction():
@@ -41,14 +37,12 @@ def test_faction_list_contains_nordic_faction():
     assert nordic_faction in VALID_FACTIONS
 
 
-def test_nordic_faction_defaults_to_four_power():
-    nordic_base_power = 4
-    assert nordic_base_power == ScytheFaction(scythe_faction_creator.NORDIC).base_power
-
-
-def test_nordic_faction_defaults_to_one_combat_cards():
-    nordic_base_combat_cards = 1
-    assert nordic_base_combat_cards == ScytheFaction(scythe_faction_creator.NORDIC).base_combat_cards
+def test_nordic_faction_defaults_to_correct_base():
+    base_power = 4
+    base_combat_cards = 1
+    scythe_faction = ScytheFaction(scythe_faction_creator.NORDIC)
+    assert base_power == scythe_faction.base_power
+    assert base_combat_cards == scythe_faction.base_combat_cards
 
 
 def test_faction_list_contains_polania_faction():
@@ -56,14 +50,12 @@ def test_faction_list_contains_polania_faction():
     assert polania_faction in VALID_FACTIONS
 
 
-def test_polania_faction_defaults_to_two_power():
-    polania_base_power = 2
-    assert polania_base_power == ScytheFaction(scythe_faction_creator.POLANIA).base_power
-
-
-def test_polania_faction_defaults_to_three_combat_cards():
-    polania_base_combat_cards = 3
-    assert polania_base_combat_cards == ScytheFaction(scythe_faction_creator.POLANIA).base_combat_cards
+def test_polania_faction_defaults_to_correct_base():
+    base_power = 2
+    base_combat_cards = 3
+    scythe_faction = ScytheFaction(scythe_faction_creator.POLANIA)
+    assert base_power == scythe_faction.base_power
+    assert base_combat_cards == scythe_faction.base_combat_cards
 
 
 def test_faction_list_contains_rusviet_faction():
@@ -71,14 +63,12 @@ def test_faction_list_contains_rusviet_faction():
     assert rusviet_faction in VALID_FACTIONS
 
 
-def test_rusviet_faction_defaults_to_two_power():
-    rusviet_base_power = 3
-    assert rusviet_base_power == ScytheFaction(scythe_faction_creator.RUSVIET).base_power
-
-
-def test_rusviet_faction_defaults_to_three_combat_cards():
-    rusviet_base_combat_cards = 2
-    assert rusviet_base_combat_cards == ScytheFaction(scythe_faction_creator.RUSVIET).base_combat_cards
+def test_rusviet_faction_defaults_to_correct_base():
+    base_power = 3
+    base_combat_cards = 2
+    scythe_faction = ScytheFaction(scythe_faction_creator.RUSVIET)
+    assert base_power == scythe_faction.base_power
+    assert base_combat_cards == scythe_faction.base_combat_cards
 
 
 def test_faction_list_contains_saxony_faction():
@@ -86,14 +76,12 @@ def test_faction_list_contains_saxony_faction():
     assert saxony_faction in VALID_FACTIONS
 
 
-def test_saxony_faction_defaults_to_one_power():
-    saxony_base_power = 1
-    assert saxony_base_power == ScytheFaction(scythe_faction_creator.SAXONY).base_power
-
-
-def test_saxony_faction_defaults_to_four_combat_cards():
-    saxony_base_combat_cards = 4
-    assert saxony_base_combat_cards == ScytheFaction(scythe_faction_creator.SAXONY).base_combat_cards
+def test_saxony_faction_defaults_to_correct_base():
+    base_power = 1
+    base_combat_cards = 4
+    scythe_faction = ScytheFaction(scythe_faction_creator.SAXONY)
+    assert base_power == scythe_faction.base_power
+    assert base_combat_cards == scythe_faction.base_combat_cards
 
 
 def test_faction_list_contains_togawa_faction():
@@ -101,14 +89,12 @@ def test_faction_list_contains_togawa_faction():
     assert togawa_faction in VALID_FACTIONS
 
 
-def test_togawa_faction_defaults_to_one_power():
-    togawa_base_power = 0
-    assert togawa_base_power == ScytheFaction(scythe_faction_creator.TOGAWA).base_power
-
-
-def test_togawa_faction_defaults_to_four_combat_cards():
-    togawa_base_combat_cards = 2
-    assert togawa_base_combat_cards == ScytheFaction(scythe_faction_creator.TOGAWA).base_combat_cards
+def test_togawa_faction_defaults_to_correct_base():
+    base_power = 0
+    base_combat_cards = 2
+    scythe_faction = ScytheFaction(scythe_faction_creator.TOGAWA)
+    assert base_power == scythe_faction.base_power
+    assert base_combat_cards == scythe_faction.base_combat_cards
 
 
 def test_faction_created_is_faction_asked_for():
