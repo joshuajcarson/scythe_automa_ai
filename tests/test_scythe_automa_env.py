@@ -2,7 +2,8 @@ import unittest.mock
 
 import pytest
 
-from scythe_automa_ai.scythe_automa_env import ScytheGameStateManager, VALID_FACTIONS
+from scythe_automa_ai.scythe_automa_env import ScytheGameStateManager
+from scythe_automa_ai.scythe_faction_creator import VALID_FACTIONS
 
 
 @pytest.fixture(scope='module')
