@@ -44,9 +44,11 @@ def test_faction_list_contains_nordic_faction():
 def test_nordic_faction_defaults_to_correct_base():
     base_power = 4
     base_combat_cards = 1
+    base_faction_power = 'swim'
     scythe_faction = ScytheFaction(scythe_faction_creator.NORDIC)
     assert base_power == scythe_faction.base_power
     assert base_combat_cards == scythe_faction.base_combat_cards
+    assert base_faction_power == scythe_faction.base_faction_power
 
 
 def test_faction_list_contains_polania_faction():
@@ -57,9 +59,11 @@ def test_faction_list_contains_polania_faction():
 def test_polania_faction_defaults_to_correct_base():
     base_power = 2
     base_combat_cards = 3
+    base_faction_power = 'meander'
     scythe_faction = ScytheFaction(scythe_faction_creator.POLANIA)
     assert base_power == scythe_faction.base_power
     assert base_combat_cards == scythe_faction.base_combat_cards
+    assert base_faction_power == scythe_faction.base_faction_power
 
 
 def test_faction_list_contains_rusviet_faction():
@@ -70,9 +74,11 @@ def test_faction_list_contains_rusviet_faction():
 def test_rusviet_faction_defaults_to_correct_base():
     base_power = 3
     base_combat_cards = 2
+    base_faction_power = 'relentless'
     scythe_faction = ScytheFaction(scythe_faction_creator.RUSVIET)
     assert base_power == scythe_faction.base_power
     assert base_combat_cards == scythe_faction.base_combat_cards
+    assert base_faction_power == scythe_faction.base_faction_power
 
 
 def test_faction_list_contains_saxony_faction():
@@ -83,9 +89,11 @@ def test_faction_list_contains_saxony_faction():
 def test_saxony_faction_defaults_to_correct_base():
     base_power = 1
     base_combat_cards = 4
+    base_faction_power = 'dominate'
     scythe_faction = ScytheFaction(scythe_faction_creator.SAXONY)
     assert base_power == scythe_faction.base_power
     assert base_combat_cards == scythe_faction.base_combat_cards
+    assert base_faction_power == scythe_faction.base_faction_power
 
 
 def test_faction_list_contains_togawa_faction():
@@ -96,9 +104,11 @@ def test_faction_list_contains_togawa_faction():
 def test_togawa_faction_defaults_to_correct_base():
     base_power = 0
     base_combat_cards = 2
+    base_faction_power = 'maifuku'
     scythe_faction = ScytheFaction(scythe_faction_creator.TOGAWA)
     assert base_power == scythe_faction.base_power
     assert base_combat_cards == scythe_faction.base_combat_cards
+    assert base_faction_power == scythe_faction.base_faction_power
 
 
 def test_faction_created_is_faction_asked_for():

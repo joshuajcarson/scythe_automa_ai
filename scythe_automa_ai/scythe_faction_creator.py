@@ -16,8 +16,8 @@ FACTION_STARTING_DATA_FRAME = pd.DataFrame(np.array([[3, 0, 'exalt'],
                                                      [3, 2, 'relentless'],
                                                      [1, 4, 'dominate'],
                                                      [0, 2, 'maifuku']]),
-                                           columns=['base_power', 'base_combat_cards', 'base_faction_power'],
-                                           index=[ALBION, CRIMEA, NORDIC, POLANIA, RUSVIET, SAXONY, TOGAWA])
+                                           columns = ['base_power', 'base_combat_cards', 'base_faction_power'],
+                                           index = [ALBION, CRIMEA, NORDIC, POLANIA, RUSVIET, SAXONY, TOGAWA])
 
 
 class InvalidFactionException(ValueError):
