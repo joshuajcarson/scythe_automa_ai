@@ -1,3 +1,6 @@
+import numpy as np
+import pandas as pd
+
 ALBION = 'albion'
 CRIMEA = 'crimea'
 NORDIC = 'nordic'
@@ -6,6 +9,9 @@ RUSVIET = 'rusviet'
 SAXONY = 'saxony'
 TOGAWA = 'togawa'
 VALID_FACTIONS = [ALBION, CRIMEA, NORDIC, POLANIA, RUSVIET, SAXONY, TOGAWA]
+FACTION_STARTING_DATA_FRAME = pd.DataFrame(np.array([[3, 0], [5, 0], [4, 1], [2, 3], [3, 2], [1, 4], [0, 2]]),
+                                           columns=['base_power', 'base_combat_cards'],
+                                           index=[ALBION, CRIMEA, NORDIC, POLANIA, RUSVIET, SAXONY, TOGAWA])
 
 
 class InvalidFactionException(ValueError):
@@ -13,19 +19,11 @@ class InvalidFactionException(ValueError):
 
 
 def base_power_for_faction(faction):
-    if faction == ALBION:
-        return 3
-    elif faction == POLANIA:
-        return 2
-    return 1
+    return FACTION_STARTING_DATA_FRAME.loc[faction, 'base_power']
 
 
 def base_combat_cards_for_faction(faction):
-    if faction == ALBION:
-        return 0
-    elif faction == POLANIA:
-        return 3
-    return 4
+    return FACTION_STARTING_DATA_FRAME.loc[faction, 'base_combat_cards']
 
 
 class ScytheFaction():
