@@ -1,9 +1,9 @@
 import numpy as np
 import pandas as pd
 
-FACTION_ABILITY = 'faction_ability'
-INITIAL_COMBAT_CARDS = 'initial_combat_cards'
 INITIAL_POWER = 'initial_power'
+INITIAL_COMBAT_CARDS = 'initial_combat_cards'
+FACTION_ABILITY = 'faction_ability'
 MECH_ONE_ABILITY = 'mech_one_ability'
 MECH_TWO_ABILITY = 'mech_two_ability'
 MECH_THREE_ABILITY = 'mech_three_ability'
@@ -39,44 +39,10 @@ class InvalidFactionException(ValueError):
     """To be raised when invalid factions are requested"""
 
 
-def base_power_for_faction(faction):
-    return FACTION_STARTING_DATA_FRAME.loc[faction, INITIAL_POWER]
-
-
-def base_combat_cards_for_faction(faction):
-    return FACTION_STARTING_DATA_FRAME.loc[faction, INITIAL_COMBAT_CARDS]
-
-
-def base_faction_power_for_faction(faction):
-    return FACTION_STARTING_DATA_FRAME.loc[faction, FACTION_ABILITY]
-
-
-def mech_one_ability_for_faction(faction):
-    return FACTION_STARTING_DATA_FRAME.loc[faction, MECH_ONE_ABILITY]
-
-
-def mech_two_ability_for_faction(faction):
-    return FACTION_STARTING_DATA_FRAME.loc[faction, MECH_TWO_ABILITY]
-
-
-def mech_three_ability_for_faction(faction):
-    return FACTION_STARTING_DATA_FRAME.loc[faction, MECH_THREE_ABILITY]
-
-
-def mech_four_ability_for_faction(faction):
-    return FACTION_STARTING_DATA_FRAME.loc[faction, MECH_FOUR_ABILITY]
-
-
 class ScytheFaction():
 
     def __init__(self, faction_name):
         if faction_name not in VALID_FACTIONS:
             raise InvalidFactionException('Invalid Faction Requested', faction_name)
         self.faction = faction_name
-        self.initial_power = base_power_for_faction(faction_name)
-        self.initial_combat_cards = base_combat_cards_for_faction(faction_name)
-        self.faction_ability = base_faction_power_for_faction(faction_name)
-        self.mech_one_ability = mech_one_ability_for_faction(faction_name)
-        self.mech_two_ability = mech_two_ability_for_faction(faction_name)
-        self.mech_three_ability = mech_three_ability_for_faction(faction_name)
-        self.mech_four_ability = mech_four_ability_for_faction(faction_name)
+        self.player_data = FACTION_STARTING_DATA_FRAME.loc[faction_name]

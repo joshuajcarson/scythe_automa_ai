@@ -2,115 +2,58 @@ import random
 
 import pytest
 
-from scythe_automa_ai import scythe_faction_creator
 from scythe_automa_ai.scythe_faction_creator import VALID_FACTIONS, ScytheFaction, InvalidFactionException, \
-    INITIAL_COMBAT_CARDS, INITIAL_POWER, FACTION_ABILITY, MECH_ONE_ABILITY, MECH_TWO_ABILITY, MECH_THREE_ABILITY, \
-    MECH_FOUR_ABILITY
+    FACTION_STARTING_DATA_FRAME, ALBION, CRIMEA, NORDIC, POLANIA, RUSVIET, SAXONY, TOGAWA
 
 
-def helper_to_create_dict_for_default_values(default_power, default_combat_cards, default_faction_power,
-                                             mech_one_ability, mech_two_ability, mech_three_ability, mech_four_ability):
-    to_return = dict()
-    to_return[INITIAL_POWER] = default_power
-    to_return[INITIAL_COMBAT_CARDS] = default_combat_cards
-    to_return[FACTION_ABILITY] = default_faction_power
-    to_return[MECH_ONE_ABILITY] = mech_one_ability
-    to_return[MECH_TWO_ABILITY] = mech_two_ability
-    to_return[MECH_THREE_ABILITY] = mech_three_ability
-    to_return[MECH_FOUR_ABILITY] = mech_four_ability
-    return to_return
+def help_make_sure_values_exist_as_they_should(faction_name, faction_values):
+    scythe_faction = ScytheFaction(faction_name)
+    for i in range(0, len(faction_values)):
+        faction_values[i] == scythe_faction.player_data[i]
 
 
-def helper_for_test_to_make_sure_default_values_are_correct(created_faction_to_test_for, dict_of_default_values):
-    assert dict_of_default_values[INITIAL_POWER] == created_faction_to_test_for.initial_power
-    assert dict_of_default_values[INITIAL_COMBAT_CARDS] == created_faction_to_test_for.initial_combat_cards
-    assert dict_of_default_values[FACTION_ABILITY] == created_faction_to_test_for.faction_ability
-    assert dict_of_default_values[MECH_ONE_ABILITY] == created_faction_to_test_for.mech_one_ability
-    assert dict_of_default_values[MECH_TWO_ABILITY] == created_faction_to_test_for.mech_two_ability
-    assert dict_of_default_values[MECH_THREE_ABILITY] == created_faction_to_test_for.mech_three_ability
-    assert dict_of_default_values[MECH_FOUR_ABILITY] == created_faction_to_test_for.mech_four_ability
-
-
-def test_faction_list_contains_albion_faction():
-    albion_faction = 'albion'
-    assert albion_faction in VALID_FACTIONS
+def test_faction_data_frame_has_columns_in_correct_order():
+    columns_that_should_be_in_faction_frame = ['initial_power', 'initial_combat_cards', 'faction_ability',
+                                               'mech_one_ability', 'mech_two_ability', 'mech_three_ability',
+                                               'mech_four_ability']
+    columns_in_faction_frame = FACTION_STARTING_DATA_FRAME.columns
+    for i in range(0, len(columns_that_should_be_in_faction_frame)):
+        columns_that_should_be_in_faction_frame[i] == columns_in_faction_frame[i]
 
 
 def test_albion_faction_defaults_to_correct_base():
-    default_values = helper_to_create_dict_for_default_values(3, 0, 'exalt', 'burrow', 'sword', 'shield', 'rally')
-    scythe_faction = ScytheFaction(scythe_faction_creator.ALBION)
-    helper_for_test_to_make_sure_default_values_are_correct(scythe_faction, default_values)
-
-
-def test_faction_list_contains_crimea_faction():
-    crimea_faction = 'crimea'
-    assert crimea_faction in VALID_FACTIONS
+    default_values = [3, 0, 'exalt', 'burrow', 'sword', 'shield', 'rally']
+    help_make_sure_values_exist_as_they_should(ALBION, default_values)
 
 
 def test_crimea_faction_defaults_to_correct_base():
-    default_values = helper_to_create_dict_for_default_values(5, 0, 'coercion', 'riverwalk_crimea', 'wayfare', 'scout',
-                                                              'speed')
-    scythe_faction = ScytheFaction(scythe_faction_creator.CRIMEA)
-    helper_for_test_to_make_sure_default_values_are_correct(scythe_faction, default_values)
-
-
-def test_faction_list_contains_nordic_faction():
-    nordic_faction = 'nordic'
-    assert nordic_faction in VALID_FACTIONS
+    default_values = [5, 0, 'coercion', 'riverwalk_crimea', 'wayfare', 'scout', 'speed']
+    help_make_sure_values_exist_as_they_should(CRIMEA, default_values)
 
 
 def test_nordic_faction_defaults_to_correct_base():
-    default_values = helper_to_create_dict_for_default_values(4, 1, 'swim', 'riverwalk_nordic', 'seaworthy',
-                                                              'artillery', 'speed')
-    scythe_faction = ScytheFaction(scythe_faction_creator.NORDIC)
-    helper_for_test_to_make_sure_default_values_are_correct(scythe_faction, default_values)
-
-
-def test_faction_list_contains_polania_faction():
-    polania_faction = 'polania'
-    assert polania_faction in VALID_FACTIONS
+    default_values = [4, 1, 'swim', 'riverwalk_nordic', 'seaworthy', 'artillery', 'speed']
+    help_make_sure_values_exist_as_they_should(NORDIC, default_values)
 
 
 def test_polania_faction_defaults_to_correct_base():
-    default_values = helper_to_create_dict_for_default_values(2, 3, 'meander', 'riverwalk_polania', 'submerge',
-                                                              'camaraderie', 'speed')
-    scythe_faction = ScytheFaction(scythe_faction_creator.POLANIA)
-    helper_for_test_to_make_sure_default_values_are_correct(scythe_faction, default_values)
-
-
-def test_faction_list_contains_rusviet_faction():
-    rusviet_faction = 'rusviet'
-    assert rusviet_faction in VALID_FACTIONS
+    default_values = [2, 3, 'meander', 'riverwalk_polania', 'submerge', 'camaraderie', 'speed']
+    help_make_sure_values_exist_as_they_should(POLANIA, default_values)
 
 
 def test_rusviet_faction_defaults_to_correct_base():
-    default_values = helper_to_create_dict_for_default_values(3, 2, 'relentless', 'riverwalk_rusviet', 'township',
-                                                              'peoples_army', 'speed')
-    scythe_faction = ScytheFaction(scythe_faction_creator.RUSVIET)
-    helper_for_test_to_make_sure_default_values_are_correct(scythe_faction, default_values)
-
-
-def test_faction_list_contains_saxony_faction():
-    saxony_faction = 'saxony'
-    assert saxony_faction in VALID_FACTIONS
+    default_values = [3, 2, 'relentless', 'riverwalk_rusviet', 'township', 'peoples_army', 'speed']
+    help_make_sure_values_exist_as_they_should(RUSVIET, default_values)
 
 
 def test_saxony_faction_defaults_to_correct_base():
-    default_values = helper_to_create_dict_for_default_values(1, 4, 'dominate', 'riverwalk_saxony', 'underpass',
-                                                              'disarm', 'speed')
-    scythe_faction = ScytheFaction(scythe_faction_creator.SAXONY)
-    helper_for_test_to_make_sure_default_values_are_correct(scythe_faction, default_values)
-
-
-def test_faction_list_contains_togawa_faction():
-    togawa_faction = 'togawa'
-    assert togawa_faction in VALID_FACTIONS
+    default_values = [1, 4, 'dominate', 'riverwalk_saxony', 'underpass', 'disarm', 'speed']
+    help_make_sure_values_exist_as_they_should(SAXONY, default_values)
 
 
 def test_togawa_faction_defaults_to_correct_base():
-    default_values = helper_to_create_dict_for_default_values(0, 2, 'maifuku', 'toka', 'suiton', 'ronin', 'shinobi')
-    scythe_faction = ScytheFaction(scythe_faction_creator.TOGAWA)
-    helper_for_test_to_make_sure_default_values_are_correct(scythe_faction, default_values)
+    default_values = [0, 2, 'maifuku', 'toka', 'suiton', 'ronin', 'shinobi']
+    help_make_sure_values_exist_as_they_should(TOGAWA, default_values)
 
 
 def test_faction_created_is_faction_asked_for():
@@ -127,3 +70,10 @@ def test_faction_creation_fails_if_invalid_faction_requested():
 
 def test_only_seven_factions_exist():
     assert len(VALID_FACTIONS) == 7
+    assert 'albion' in VALID_FACTIONS
+    assert 'crimea' in VALID_FACTIONS
+    assert 'nordic' in VALID_FACTIONS
+    assert 'polania' in VALID_FACTIONS
+    assert 'rusviet' in VALID_FACTIONS
+    assert 'saxony' in VALID_FACTIONS
+    assert 'togawa' in VALID_FACTIONS

@@ -1,6 +1,7 @@
 import pytest
 
-from scythe_automa_ai.scythe_player_mat_creator import ScythePlayerMat, INDUSTRIAL, ENGINEERING, MILITANT, PATRIOTIC, INNOVATIVE, MECHANICAL, AGRICULTURAL, BOLSTER, PRODUCE, MOVE, TRADE, \
+from scythe_automa_ai.scythe_player_mat_creator import ScythePlayerMat, INDUSTRIAL, ENGINEERING, MILITANT, PATRIOTIC, \
+    INNOVATIVE, MECHANICAL, AGRICULTURAL, BOLSTER, PRODUCE, MOVE, TRADE, \
     InvalidPlayerMatException, VALID_PLAYER_MATS, PLAYER_MAT_DATA_FRAME
 
 
@@ -46,28 +47,32 @@ def test_player_mat_creator_builds_industrial_as_instructed():
     required_values = [BOLSTER, PRODUCE, MOVE, TRADE, 3, 1, 3, 3, 2, 2, 3, 1, 1, 4, 2, 0, 1, 2, 2, 4]
     confirm_values_are_as_expected(INDUSTRIAL, required_values)
 
+
 def test_player_mat_creator_builds_engineering_as_instructed():
     required_values = [PRODUCE, TRADE, BOLSTER, MOVE, 3, 1, 2, 4, 2, 0, 3, 2, 3, 3, 1, 1, 2, 2, 2, 5]
     confirm_values_are_as_expected(ENGINEERING, required_values)
+
 
 def test_player_mat_creator_builds_militant_as_instructed():
     required_values = [BOLSTER, MOVE, PRODUCE, TRADE, 3, 2, 0, 3, 1, 3, 4, 1, 1, 3, 2, 2, 3, 2, 3, 4]
     confirm_values_are_as_expected(MILITANT, required_values)
 
+
 def test_player_mat_creator_builds_patriotic_as_instructed():
     required_values = [MOVE, BOLSTER, TRADE, PRODUCE, 2, 0, 1, 4, 3, 3, 4, 2, 0, 3, 1, 2, 4, 2, 2, 6]
     confirm_values_are_as_expected(PATRIOTIC, required_values)
+
 
 def test_player_mat_creator_builds_innovative_as_instructed():
     required_values = [TRADE, PRODUCE, BOLSTER, MOVE, 3, 0, 3, 3, 1, 1, 4, 3, 2, 4, 2, 0, 5, 2, 3, 5]
     confirm_values_are_as_expected(INNOVATIVE, required_values)
 
+
 def test_player_mat_creator_builds_mechanical_as_instructed():
     required_values = [TRADE, BOLSTER, MOVE, PRODUCE, 3, 1, 0, 3, 2, 2, 3, 1, 2, 4, 2, 2, 6, 2, 3, 6]
     confirm_values_are_as_expected(MECHANICAL, required_values)
 
+
 def test_player_mat_creator_builds_agricultural_as_instructed():
     required_values = [MOVE, TRADE, PRODUCE, BOLSTER, 2, 0, 1, 4, 2, 0, 4, 2, 2, 3, 2, 3, 7, 2, 4, 7]
     confirm_values_are_as_expected(AGRICULTURAL, required_values)
-
-
