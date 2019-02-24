@@ -22,9 +22,9 @@ def helper_to_create_dict_for_default_values(default_power, default_combat_cards
 
 
 def helper_for_test_to_make_sure_default_values_are_correct(created_faction_to_test_for, dict_of_default_values):
-    assert dict_of_default_values[INITIAL_POWER] == created_faction_to_test_for.base_power
-    assert dict_of_default_values[INITIAL_COMBAT_CARDS] == created_faction_to_test_for.base_combat_cards
-    assert dict_of_default_values[FACTION_ABILITY] == created_faction_to_test_for.base_faction_power
+    assert dict_of_default_values[INITIAL_POWER] == created_faction_to_test_for.initial_power
+    assert dict_of_default_values[INITIAL_COMBAT_CARDS] == created_faction_to_test_for.initial_combat_cards
+    assert dict_of_default_values[FACTION_ABILITY] == created_faction_to_test_for.faction_ability
     assert dict_of_default_values[MECH_ONE_ABILITY] == created_faction_to_test_for.mech_one_ability
     assert dict_of_default_values[MECH_TWO_ABILITY] == created_faction_to_test_for.mech_two_ability
     assert dict_of_default_values[MECH_THREE_ABILITY] == created_faction_to_test_for.mech_three_ability

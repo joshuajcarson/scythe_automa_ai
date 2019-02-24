@@ -31,8 +31,8 @@ FACTION_STARTING_DATA_FRAME = pd.DataFrame(
     columns=[INITIAL_POWER, INITIAL_COMBAT_CARDS, FACTION_ABILITY, MECH_ONE_ABILITY, MECH_TWO_ABILITY,
              MECH_THREE_ABILITY, MECH_FOUR_ABILITY],
     index=[ALBION, CRIMEA, NORDIC, POLANIA, RUSVIET, SAXONY, TOGAWA])
-FACTION_STARTING_DATA_FRAME.initial_power = pd.to_numeric(FACTION_STARTING_DATA_FRAME[INITIAL_POWER])
-FACTION_STARTING_DATA_FRAME.initial_combat_cards = pd.to_numeric(FACTION_STARTING_DATA_FRAME[INITIAL_COMBAT_CARDS])
+FACTION_STARTING_DATA_FRAME[INITIAL_POWER] = pd.to_numeric(FACTION_STARTING_DATA_FRAME[INITIAL_POWER])
+FACTION_STARTING_DATA_FRAME[INITIAL_COMBAT_CARDS] = pd.to_numeric(FACTION_STARTING_DATA_FRAME[INITIAL_COMBAT_CARDS])
 
 
 class InvalidFactionException(ValueError):
@@ -69,14 +69,14 @@ def mech_four_ability_for_faction(faction):
 
 class ScytheFaction():
 
-    def __init__(self, faction):
-        if faction not in VALID_FACTIONS:
-            raise InvalidFactionException('Invalid Faction Requested', faction)
-        self.faction = faction
-        self.base_power = base_power_for_faction(faction)
-        self.base_combat_cards = base_combat_cards_for_faction(faction)
-        self.base_faction_power = base_faction_power_for_faction(faction)
-        self.mech_one_ability = mech_one_ability_for_faction(faction)
-        self.mech_two_ability = mech_two_ability_for_faction(faction)
-        self.mech_three_ability = mech_three_ability_for_faction(faction)
-        self.mech_four_ability = mech_four_ability_for_faction(faction)
+    def __init__(self, faction_name):
+        if faction_name not in VALID_FACTIONS:
+            raise InvalidFactionException('Invalid Faction Requested', faction_name)
+        self.faction = faction_name
+        self.initial_power = base_power_for_faction(faction_name)
+        self.initial_combat_cards = base_combat_cards_for_faction(faction_name)
+        self.faction_ability = base_faction_power_for_faction(faction_name)
+        self.mech_one_ability = mech_one_ability_for_faction(faction_name)
+        self.mech_two_ability = mech_two_ability_for_faction(faction_name)
+        self.mech_three_ability = mech_three_ability_for_faction(faction_name)
+        self.mech_four_ability = mech_four_ability_for_faction(faction_name)
