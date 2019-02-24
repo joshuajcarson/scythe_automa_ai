@@ -1,10 +1,14 @@
 import numpy as np
 import pandas as pd
 
-BASE_FACTION_POWER = 'base_faction_power'
-BASE_COMBAT_CARDS = 'base_combat_cards'
-BASE_POWER = 'base_power'
+FACTION_ABILITY = 'faction_ability'
+INITIAL_COMBAT_CARDS = 'initial_combat_cards'
+INITIAL_POWER = 'initial_power'
 MECH_ONE_ABILITY = 'mech_one_ability'
+MECH_TWO_ABILITY = 'mech_two_ability'
+MECH_THREE_ABILITY = 'mech_three_ability'
+MECH_FOUR_ABILITY = 'mech_four_ability'
+
 ALBION = 'albion'
 CRIMEA = 'crimea'
 NORDIC = 'nordic'
@@ -14,17 +18,21 @@ SAXONY = 'saxony'
 TOGAWA = 'togawa'
 VALID_FACTIONS = [ALBION, CRIMEA, NORDIC, POLANIA, RUSVIET, SAXONY, TOGAWA]
 
-FACTION_STARTING_DATA_FRAME = pd.DataFrame(np.array([[3, 0, 'exalt', 'burrow'],
-                                                     [5, 0, 'coercion', 'riverwalk_crimea'],
-                                                     [4, 1, 'swim', 'riverwalk_nordic'],
-                                                     [2, 3, 'meander', 'riverwalk_polania'],
-                                                     [3, 2, 'relentless', 'riverwalk_rusviet'],
-                                                     [1, 4, 'dominate', 'riverwalk_saxony'],
-                                                     [0, 2, 'maifuku', 'toka']]),
-                                           columns=[BASE_POWER, BASE_COMBAT_CARDS, BASE_FACTION_POWER, MECH_ONE_ABILITY],
-                                           index=[ALBION, CRIMEA, NORDIC, POLANIA, RUSVIET, SAXONY, TOGAWA])
-FACTION_STARTING_DATA_FRAME.base_power = pd.to_numeric(FACTION_STARTING_DATA_FRAME.base_power)
-FACTION_STARTING_DATA_FRAME.base_combat_cards = pd.to_numeric(FACTION_STARTING_DATA_FRAME.base_combat_cards)
+ALBION_DATA = [3, 0, 'exalt', 'burrow', 'sword', 'shield', 'rally']
+CRIMEA_DATA = [5, 0, 'coercion', 'riverwalk_crimea', 'wayfare', 'scout', 'speed']
+NORDIC_DATA = [4, 1, 'swim', 'riverwalk_nordic', 'seaworthy', 'artillery', 'speed']
+POLANIA_DATA = [2, 3, 'meander', 'riverwalk_polania', 'submerge', 'camaraderie', 'speed']
+RUSVIET_DATA = [3, 2, 'relentless', 'riverwalk_rusviet', 'township', 'peoples_army', 'speed']
+SAXONY_DATA = [1, 4, 'dominate', 'riverwalk_saxony', 'underpass', 'disarm', 'speed']
+TOGAWA_DATA = [0, 2, 'maifuku', 'toka', 'suiton', 'ronin', 'shinobi']
+
+FACTION_STARTING_DATA_FRAME = pd.DataFrame(
+    np.array([ALBION_DATA, CRIMEA_DATA, NORDIC_DATA, POLANIA_DATA, RUSVIET_DATA, SAXONY_DATA, TOGAWA_DATA]),
+    columns=[INITIAL_POWER, INITIAL_COMBAT_CARDS, FACTION_ABILITY, MECH_ONE_ABILITY, MECH_TWO_ABILITY,
+             MECH_THREE_ABILITY, MECH_FOUR_ABILITY],
+    index=[ALBION, CRIMEA, NORDIC, POLANIA, RUSVIET, SAXONY, TOGAWA])
+FACTION_STARTING_DATA_FRAME.initial_power = pd.to_numeric(FACTION_STARTING_DATA_FRAME[INITIAL_POWER])
+FACTION_STARTING_DATA_FRAME.initial_combat_cards = pd.to_numeric(FACTION_STARTING_DATA_FRAME[INITIAL_COMBAT_CARDS])
 
 
 class InvalidFactionException(ValueError):
@@ -32,18 +40,32 @@ class InvalidFactionException(ValueError):
 
 
 def base_power_for_faction(faction):
-    return FACTION_STARTING_DATA_FRAME.loc[faction, BASE_POWER]
+    return FACTION_STARTING_DATA_FRAME.loc[faction, INITIAL_POWER]
 
 
 def base_combat_cards_for_faction(faction):
-    return FACTION_STARTING_DATA_FRAME.loc[faction, BASE_COMBAT_CARDS]
+    return FACTION_STARTING_DATA_FRAME.loc[faction, INITIAL_COMBAT_CARDS]
 
 
 def base_faction_power_for_faction(faction):
-    return FACTION_STARTING_DATA_FRAME.loc[faction, BASE_FACTION_POWER]
+    return FACTION_STARTING_DATA_FRAME.loc[faction, FACTION_ABILITY]
+
 
 def mech_one_ability_for_faction(faction):
     return FACTION_STARTING_DATA_FRAME.loc[faction, MECH_ONE_ABILITY]
+
+
+def mech_two_ability_for_faction(faction):
+    return FACTION_STARTING_DATA_FRAME.loc[faction, MECH_TWO_ABILITY]
+
+
+def mech_three_ability_for_faction(faction):
+    return FACTION_STARTING_DATA_FRAME.loc[faction, MECH_THREE_ABILITY]
+
+
+def mech_four_ability_for_faction(faction):
+    return FACTION_STARTING_DATA_FRAME.loc[faction, MECH_FOUR_ABILITY]
+
 
 class ScytheFaction():
 
@@ -55,3 +77,6 @@ class ScytheFaction():
         self.base_combat_cards = base_combat_cards_for_faction(faction)
         self.base_faction_power = base_faction_power_for_faction(faction)
         self.mech_one_ability = mech_one_ability_for_faction(faction)
+        self.mech_two_ability = mech_two_ability_for_faction(faction)
+        self.mech_three_ability = mech_three_ability_for_faction(faction)
+        self.mech_four_ability = mech_four_ability_for_faction(faction)
