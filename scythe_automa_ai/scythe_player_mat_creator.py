@@ -85,5 +85,5 @@ class ScythePlayerMat():
     def __init__(self, player_mat_name):
         if player_mat_name not in VALID_PLAYER_MATS:
             raise InvalidPlayerMatException('Invalid Player Mat Requested', player_mat_name)
-        self.name = player_mat_name
+        self.player_mat_name = player_mat_name
         self.player_mat_data = PLAYER_MAT_DATA_FRAME.loc[player_mat_name]

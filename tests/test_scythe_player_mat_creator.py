@@ -7,7 +7,7 @@ from scythe_automa_ai.scythe_player_mat_creator import ScythePlayerMat, INDUSTRI
 
 def confirm_values_are_as_expected(player_mat_name, player_mat_values):
     player_mat = ScythePlayerMat(player_mat_name)
-    assert player_mat_name == player_mat.name
+    assert player_mat_name == player_mat.player_mat_name
     values_from_player_mat = player_mat.player_mat_data
     for i in range(0, len(player_mat_values)):
         assert player_mat_values[i] == values_from_player_mat[i]
