@@ -56,10 +56,10 @@ def test_togawa_faction_defaults_to_correct_base():
     help_make_sure_values_exist_as_they_should(TOGAWA, default_values)
 
 
-def test_faction_created_is_faction_asked_for():
+def test_faction_name_created_is_faction_asked_for():
     any_faction = random.choice(VALID_FACTIONS)
     faction_board = ScytheFaction(any_faction)
-    assert any_faction == faction_board.faction, "Factions are not the same"
+    assert any_faction == faction_board.faction_name, "Factions are not the same"
 
 
 def test_faction_creation_fails_if_invalid_faction_requested():

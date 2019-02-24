@@ -44,5 +44,5 @@ class ScytheFaction():
     def __init__(self, faction_name):
         if faction_name not in VALID_FACTIONS:
             raise InvalidFactionException('Invalid Faction Requested', faction_name)
-        self.faction = faction_name
+        self.faction_name = faction_name
         self.player_data = FACTION_STARTING_DATA_FRAME.loc[faction_name]
