@@ -31,26 +31,27 @@ def test_newly_created_environment_has_player_set_to_valid_faction(default_game_
             default_game_board.player_faction.faction_name)
 
 
-def test_newly_created_environment_uses_random_choice_to_determine_faction_for_player(mocker):
+def test_newly_created_environment_uses_random_choice_to_determine_faction_for_player():
     with unittest.mock.patch.object(random, 'choice', wraps=random.choice) as spy:
         ScytheGameStateManager()
-        spy.assert_any_call(VALID_PLAYER_MATS)
+        spy.assert_any_call(VALID_FACTIONS)
 
 
-def test_newly_created_environment_uses_unique_faction_from_player_to_determine_faction_for_automa():
-    randomized_game_board = ScytheGameStateManager()
-    assert randomized_game_board.player_faction.faction_name != randomized_game_board.automa_faction.faction_name, \
-        "Player faction and Automa faction were the same"
-    assert randomized_game_board.automa_faction.faction_name in VALID_FACTIONS
+def test_newly_created_environment_uses_random_and_different_faction_from_player_to_determine_faction_for_automa():
+    with unittest.mock.patch.object(random, 'choice', wraps=random.choice) as spy:
+        created_game_state = ScytheGameStateManager()
+        player_faction_name = created_game_state.player_faction.faction_name
+        filtered_without_player_faction = list(filter(lambda x: x != player_faction_name, VALID_FACTIONS))
+        spy.assert_any_call(filtered_without_player_faction)
 
 
 def test_newly_created_environment_has_player_set_to_valid_player_mat(default_game_board):
     if default_game_board.player_mat.player_mat_name not in VALID_PLAYER_MATS:
         assert False, "Default player mat not one of the seven valid mats and instead was {}".format(
-            default_game_board.player_faction)
+            default_game_board.player_mat.player_mat_name)
 
 
-def test_newly_created_environment_uses_random_choice_to_determine_player_mat_for_player(mocker):
+def test_newly_created_environment_uses_random_choice_to_determine_player_mat_for_player():
     with unittest.mock.patch.object(random, 'choice', wraps=random.choice) as spy:
         ScytheGameStateManager()
-        spy.assert_any_call(VALID_FACTIONS)
+        spy.assert_any_call(VALID_PLAYER_MATS)
