@@ -81,28 +81,9 @@ class InvalidPlayerMatException(ValueError):
     """To be raised when invalid factions are requested"""
 
 
-def far_left_top_row_for_player(player):
-    return PLAYER_MAT_DATA_FRAME.loc[player, FAR_LEFT_TOP_ROW]
-
-
-def middle_left_top_row_for_player(player):
-    return PLAYER_MAT_DATA_FRAME.loc[player, MIDDLE_LEFT_TOP_ROW]
-
-
-def middle_right_top_row_for_player(player):
-    return PLAYER_MAT_DATA_FRAME.loc[player, MIDDLE_RIGHT_TOP_ROW]
-
-
-def far_right_top_row_for_player(player):
-    return PLAYER_MAT_DATA_FRAME.loc[player, FAR_RIGHT_TOP_ROW]
-
-
 class ScythePlayerMat():
     def __init__(self, player_mat_name):
         if player_mat_name not in VALID_PLAYER_MATS:
             raise InvalidPlayerMatException('Invalid Player Mat Requested', player_mat_name)
         self.name = player_mat_name
-        self.far_left_top_row = far_left_top_row_for_player(player_mat_name)
-        self.middle_left_top_row = middle_left_top_row_for_player(player_mat_name)
-        self.middle_right_top_row = middle_right_top_row_for_player(player_mat_name)
-        self.far_right_top_row = far_right_top_row_for_player(player_mat_name)
+        self.player_mat_data = PLAYER_MAT_DATA_FRAME.loc[player_mat_name]
