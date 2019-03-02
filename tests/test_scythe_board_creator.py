@@ -1,9 +1,37 @@
-from scythe_automa_ai.scythe_board_creator import ScytheBoard, IDENTIFIER, U_CORD, V_CORD
+import pytest
+
+from scythe_automa_ai.scythe_board_creator import ScytheBoard, TYPE, TUNNEL, TOP_LEFT_RIVER, TOP_RIGHT_RIVER, \
+    LEFT_RIVER, RIGHT_RIVER, BOTTOM_LEFT_RIVER, BOTTOM_RIGHT_RIVER, HOME_BASE, IDENTIFIER, MOUNTAIN
+from scythe_automa_ai.scythe_faction_creator import SAXONY
 
 
-def test_board_has_home_for_saxony_in_correct_location():
-    board_created = ScytheBoard()
-    saxony_home_base = board_created.tiles[board_created.tiles[IDENTIFIER] == 'saxony_home_base'].iloc[0]
-    assert 1 == len(board_created.tiles[board_created.tiles[IDENTIFIER] == 'saxony_home_base'])
-    assert -4 == saxony_home_base.loc[U_CORD]
-    assert 7 == saxony_home_base.loc[V_CORD]
+@pytest.fixture(scope='module')
+def default_game_tiles():
+    default_game_tiles = ScytheBoard().tiles
+    return default_game_tiles
+
+
+def test_board_has_home_base_for_saxony(default_game_tiles):
+    tile_under_test = default_game_tiles.loc[-4, 7]
+    assert HOME_BASE == tile_under_test.loc[TYPE]
+    assert SAXONY == tile_under_test.loc[IDENTIFIER]
+    assert False == tile_under_test.loc[TUNNEL]
+    assert False == tile_under_test.loc[TOP_LEFT_RIVER]
+    assert False == tile_under_test.loc[TOP_RIGHT_RIVER]
+    assert False == tile_under_test.loc[LEFT_RIVER]
+    assert False == tile_under_test.loc[RIGHT_RIVER]
+    assert False == tile_under_test.loc[BOTTOM_LEFT_RIVER]
+    assert False == tile_under_test.loc[BOTTOM_RIGHT_RIVER]
+
+
+def test_top_left_tunnel_is_properly_setup(default_game_tiles):
+    tile_under_test = default_game_tiles.loc[0, 3]
+    assert MOUNTAIN == tile_under_test.loc[TYPE]
+    assert "" == tile_under_test.loc[IDENTIFIER]
+    assert True == tile_under_test.loc[TUNNEL]
+    assert False == tile_under_test.loc[TOP_LEFT_RIVER]
+    assert False == tile_under_test.loc[TOP_RIGHT_RIVER]
+    assert True == tile_under_test.loc[LEFT_RIVER]
+    assert False == tile_under_test.loc[RIGHT_RIVER]
+    assert True == tile_under_test.loc[BOTTOM_LEFT_RIVER]
+    assert False == tile_under_test.loc[BOTTOM_RIGHT_RIVER]
