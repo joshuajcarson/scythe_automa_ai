@@ -2,7 +2,7 @@
 Program to create AI Capable of playing Scythe
 
 * Tested on: os: [ubuntu-latest]
-* Tested on: python-version: [3.6]
+* Tested on: python-version: [3.8]
 
 ![Python package](https://github.com/joshuajcarson/scythe_automa_ai/workflows/Python%20application/badge.svg)
 
