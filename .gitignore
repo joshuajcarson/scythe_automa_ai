@@ -2,3 +2,4 @@
 .idea/
 /gym_scythe.egg-info/
 .pytest_cache
+.venv
