@@ -15,7 +15,7 @@ def confirm_values_are_as_expected(player_mat_name, player_mat_values):
 
 def test_player_mat_creator_fails_if_invalid_player_type_requested():
     invalid_player_mat = 'not_a_real_player_mat'
-    with pytest.raises(InvalidPlayerMatException) as e_info:
+    with pytest.raises(InvalidPlayerMatException):
         ScythePlayerMat(invalid_player_mat)
 
 

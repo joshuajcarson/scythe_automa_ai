@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from scythe_automa_ai.scythe_faction_creator import SAXONY, CRIMEA, TOGAWA, RUSVIET, NORDIC, ALBION, POLANIA
+from scythe_automa_ai.scythe_faction_creator import SAXONY
 
 TYPE = 'type'
 IDENTIFIER = 'identifier'
@@ -18,7 +18,8 @@ V_CORD = 'v'
 
 STARTING_BOARD = pd.DataFrame(np.array([[-4, 7, HOME_BASE, SAXONY, "", "", "", "", "", "", ""],
                                         [0, 3, MOUNTAIN, "", 'True', "", "", "True", "", "True", ""]]),
-                              columns=[U_CORD, V_CORD, TYPE, IDENTIFIER, TUNNEL, TOP_LEFT_RIVER, TOP_RIGHT_RIVER, LEFT_RIVER, RIGHT_RIVER, BOTTOM_LEFT_RIVER, BOTTOM_RIGHT_RIVER])
+                              columns=[U_CORD, V_CORD, TYPE, IDENTIFIER, TUNNEL, TOP_LEFT_RIVER, TOP_RIGHT_RIVER,
+                                       LEFT_RIVER, RIGHT_RIVER, BOTTOM_LEFT_RIVER, BOTTOM_RIGHT_RIVER])
 STARTING_BOARD[U_CORD] = pd.to_numeric(STARTING_BOARD[U_CORD])
 STARTING_BOARD[V_CORD] = pd.to_numeric(STARTING_BOARD[V_CORD])
 STARTING_BOARD[TUNNEL] = STARTING_BOARD[TUNNEL].astype('bool')

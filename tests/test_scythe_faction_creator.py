@@ -64,7 +64,7 @@ def test_faction_name_created_is_faction_asked_for():
 
 def test_faction_creation_fails_if_invalid_faction_requested():
     invalid_faction = 'this_is_not_a_real_faction'
-    with pytest.raises(InvalidFactionException) as e_info:
+    with pytest.raises(InvalidFactionException):
         ScytheFaction(invalid_faction)
 
 
