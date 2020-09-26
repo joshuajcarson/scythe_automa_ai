@@ -2,7 +2,7 @@ import pytest
 
 from scythe_automa_ai.scythe_board_creator import ScytheBoard, TYPE, TUNNEL, TOP_LEFT_RIVER, TOP_RIGHT_RIVER, \
     LEFT_RIVER, RIGHT_RIVER, BOTTOM_LEFT_RIVER, BOTTOM_RIGHT_RIVER, HOME_BASE, IDENTIFIER, MOUNTAIN
-from scythe_automa_ai.scythe_faction_creator import SAXONY
+from scythe_automa_ai.scythe_faction_creator import SAXONY, ALBION
 
 
 @pytest.fixture(scope='module')
@@ -15,6 +15,19 @@ def test_board_has_home_base_for_saxony(default_game_tiles):
     tile_under_test = default_game_tiles.loc[-4, 7]
     assert HOME_BASE == tile_under_test.loc[TYPE]
     assert SAXONY == tile_under_test.loc[IDENTIFIER]
+    assert not tile_under_test.loc[TUNNEL]
+    assert not tile_under_test.loc[TOP_LEFT_RIVER]
+    assert not tile_under_test.loc[TOP_RIGHT_RIVER]
+    assert not tile_under_test.loc[LEFT_RIVER]
+    assert not tile_under_test.loc[RIGHT_RIVER]
+    assert not tile_under_test.loc[BOTTOM_LEFT_RIVER]
+    assert not tile_under_test.loc[BOTTOM_RIGHT_RIVER]
+
+
+def test_board_has_home_base_for_albion(default_game_tiles):
+    tile_under_test = default_game_tiles.loc[1, 0]
+    assert HOME_BASE == tile_under_test.loc[TYPE]
+    assert ALBION == tile_under_test.loc[IDENTIFIER]
     assert not tile_under_test.loc[TUNNEL]
     assert not tile_under_test.loc[TOP_LEFT_RIVER]
     assert not tile_under_test.loc[TOP_RIGHT_RIVER]

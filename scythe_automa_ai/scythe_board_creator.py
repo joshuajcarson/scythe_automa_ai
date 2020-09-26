@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from scythe_automa_ai.scythe_faction_creator import SAXONY
+from scythe_automa_ai.scythe_faction_creator import SAXONY, ALBION
 
 TYPE = 'type'
 IDENTIFIER = 'identifier'
@@ -17,6 +17,7 @@ U_CORD = 'u'
 V_CORD = 'v'
 
 STARTING_BOARD = pd.DataFrame(np.array([[-4, 7, HOME_BASE, SAXONY, "", "", "", "", "", "", ""],
+                                        [1, 0, HOME_BASE, ALBION, "", "", "", "", "", "", ""],
                                         [0, 3, MOUNTAIN, "", 'True', "", "", "True", "", "True", ""]]),
                               columns=[U_CORD, V_CORD, TYPE, IDENTIFIER, TUNNEL, TOP_LEFT_RIVER, TOP_RIGHT_RIVER,
                                        LEFT_RIVER, RIGHT_RIVER, BOTTOM_LEFT_RIVER, BOTTOM_RIGHT_RIVER])
